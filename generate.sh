@@ -15,4 +15,4 @@ fi
 docker build --quiet --tag qrencode:latest .
 
 # Generate QR code.
-echo "WIFI:T:WPA;S:${ssid};P:${password};;" | docker run --rm --interactive --net none qrencode:latest -l H -o - > "${ssid}.png"
+docker run --rm --interactive --net none qrencode:latest -o - -s 50 -l H -m 0 -d 300 "WIFI:T:WPA;S:${ssid};P:${password};;" > "${ssid}.png"
